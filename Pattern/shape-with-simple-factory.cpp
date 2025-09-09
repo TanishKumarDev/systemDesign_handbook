@@ -3,7 +3,7 @@ using namespace std;
 
 class Shape {
 public:
-    virtual void draw() = 0;
+    virtual void draw() = 0; // // Pure virtual function (abstract class)
     virtual ~Shape() {}
 };
 
