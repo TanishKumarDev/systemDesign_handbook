@@ -368,21 +368,21 @@ virtual ~PaymentProcessor() = default; // Virtual destructor for safety
 
 ---
 
-### 1. `virtual void processPayment(double amount) = 0;`
+#### ⚡ `virtual void processPayment(double amount) = 0;`
 
-### **What?**
+#### **What?**
 
 * Yeh **pure virtual function** hai.
 * Matlab: is function ka **koi implementation** nahi hoga base class me.
 * Sirf **blueprint** deta hai: “Jo bhi child class banega, usko yeh function zaroor implement karna padega.”
 
-### **Why?**
+#### **Why?**
 
 * Kyunki `PaymentProcessor` ek **abstract class** banani hai.
 * Hum nahi chahte ki koi `PaymentProcessor` ka object banaye (kyunki payment ka exact method define nahi hai).
 * Har child class (PayPal, UPI, CreditCard) apne hisaab se payment ka logic define karegi.
 
-### **How?**
+#### **How?**
 
 * `= 0` likhne se compiler samajh jaata hai ki yeh **pure virtual** hai.
 * Agar child ne is function ko override nahi kiya → **Compile-time error**.
@@ -392,14 +392,14 @@ virtual ~PaymentProcessor() = default; // Virtual destructor for safety
 
 ---
 
-## 2. `virtual ~PaymentProcessor() = default;`
+#### ⚡ `virtual ~PaymentProcessor() = default;`
 
-### **What?**
+#### **What?**
 
 * Yeh ek **virtual destructor** hai.
 * `= default` ka matlab hai: compiler automatically ek default destructor bana dega.
 
-### **Why?**
+#### **Why?**
 
 * Jab hum base class ka pointer use karte hain:
 
@@ -421,9 +421,9 @@ virtual ~PaymentProcessor() = default; // Virtual destructor for safety
 *"Agar base pointer se child object delete karoge, toh pura cleanup ho, half nahi."*
 
 
-### 🔥 Destructor Simplified
+### Destructor Simplified
 
-### 1. Destructor kya hota hai?
+#### 1. Destructor kya hota hai?
 
 * Destructor = **special function** jo object ke destroy hone par automatically chal jaata hai.
 * Use hota hai → memory clean karne ke liye, resources (file, database connection, heap memory) free karne ke liye.
@@ -462,7 +462,7 @@ Object destroyed
 
 ---
 
-### 2. Problem without Virtual Destructor (⚠️)
+#### 2. Problem without Virtual Destructor (⚠️)
 
 Jab hum **inheritance + polymorphism** use karte hain:
 
@@ -496,7 +496,7 @@ Base destructor
 
 ---
 
-### 3. Solution → Virtual Destructor ✅
+#### 3. Solution → Virtual Destructor ✅
 
 ```cpp
 class Base {
@@ -526,7 +526,7 @@ Base destructor
 
 ---
 
-### 4. Tumhare Example me
+#### 4. Tumhare Example me
 
 ```cpp
 virtual ~PaymentProcessor() = default;
@@ -539,7 +539,7 @@ Matlab:
 
 ---
 
-### 🌟 Final Ek-Line Simple Words
+##### Final Ek-Line Simple Words
 
 * Destructor = jab object delete hota hai → cleanup.
 * Agar **virtual destructor** nahi hai → base pointer se delete karne pe sirf base cleanup hoga, child ka nahi (problem!).
@@ -549,7 +549,7 @@ Matlab:
 
 Bhai, ab clear hua? Ya mai ek **daily life analogy** banake samjhaun (jaise ghar me safai pehle chhote kamre → fir bada kamra)?
 
-### 🌟 Final Summary
+##### Final Summary
 
 * **`virtual void processPayment(...) = 0;`** → Pure virtual function → child must override → makes class **abstract**.
 * **`virtual ~PaymentProcessor() = default;`** → Virtual destructor → ensures proper destruction (no memory leaks) when using base class pointers.
