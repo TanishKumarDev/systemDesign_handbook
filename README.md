@@ -1,66 +1,79 @@
-# System Design
-
-This repository contains **notes, explanations, and examples** of all **23 Gang of Four (GoF) Design Patterns** – organized into **Creational, Structural, and Behavioral** categories.
-
-Useful for **System Design interviews** and **LLD preparation**.
-
----
-
-## 📂 Topics
-
-### **1. Creational Patterns (5)**
-
-👉 *How objects are created (focus on instantiation).*
-
-1. **Factory Method** – One method to create objects, subclasses decide which class to instantiate.
-2. **Abstract Factory** – Factory of factories (creates families of related objects).
-3. **Singleton** – Only one instance exists globally (like Logger, Config).
-4. **Prototype** – Create new objects by cloning existing ones.
-5. **Builder** – Step-by-step construction of complex objects.
-
----
-
-### **2. Structural Patterns (7)**
-
-👉 *How classes/objects are combined to form larger structures.*
-
-1. **Adapter** – Convert one interface into another (plug adapter).
-2. **Bridge** – Separate abstraction from implementation so both can vary.
-3. **Composite** – Tree structure (whole-part), e.g., files & folders.
-4. **Decorator** – Add new features dynamically without altering original class.
-5. **Facade** – Simplified interface hiding complex subsystems.
-6. **Flyweight** – Share common data to save memory (used in text editors for characters).
-7. **Proxy** – Placeholder controlling access to real object (e.g., virtual proxy, security proxy).
-
----
-
-### **3. Behavioral Patterns (11)**
-
-👉 *How objects interact, communicate, and share responsibilities.*
-
-1. **Chain of Responsibility** – Pass request along a chain until handled.
-2. **Command** – Encapsulate requests as objects (undo/redo systems).
-3. **Interpreter** – Define grammar and interpret expressions.
-4. **Mediator** – Central object controls communication between many objects.
-5. **Memento** – Save & restore object state (like checkpoints).
-6. **Observer** – One-to-many notification (e.g., event listeners).
-7. **State** – Change behavior based on internal state (like traffic light).
-8. **Strategy** – Select algorithm at runtime (sorting strategies).
-9. **Template Method** – Skeleton algorithm, subclasses fill in steps.
-10. **Visitor** – Add new operations without changing object structure.
-11. **Iterator** – Sequential access to elements without exposing internal details.
-
----
-
-✅ **Total = 23 patterns**
-
-* Creational → 5
-* Structural → 7
-* Behavioral → 11
-
-
-
----
-
-## 🎯 Interview Questions
-📖 Reference:
+```
+└── 📁systemDesign_handbook
+    └── 📁1. OOP
+        ├── 1. oops-notes.md
+        ├── 2. creating-class-and-object.cpp
+        ├── 3. abstraction.cpp
+        ├── 4. encapsulation.cpp
+        ├── 5. inheritance.cpp
+        ├── 6. polymorphism.cpp
+    └── 📁2. SOLID-priniciples
+        ├── DIP.cpp
+        ├── ISP.cpp
+        ├── LSP.cpp
+        ├── OCP.cpp
+        ├── SOLID-priniciples-notes.md
+        ├── SRP.cpp
+    └── 📁non-functional-requirements
+        ├── availability.md
+        ├── consistency.md
+        ├── scalability.md
+    └── 📁Pattern
+        └── 📁adapter
+            ├── adapter-notes.md
+            ├── add-new-payment-system-with-old-legacy-gateway.cpp
+        └── 📁bridge
+            ├── bridge-design-pattern-notes.md
+            ├── system-for-colorsXshapes-with-bringe.cpp
+        └── 📁chain-of-responsibility
+            ├── logging-system-with-chain-of-responsibility.cpp
+            ├── technical-support-system-with-chain-of-responsibility.cpp
+        └── 📁command
+            ├── text-editor-with-commond-pattern.cpp
+        └── 📁factory
+            ├── gui-with-abstract-factory.cpp
+            ├── shape-with-factory-method.cpp
+            ├── shape-with-simple-factory.cpp
+            ├── shape-without-factory.cpp
+        └── 📁interpreter
+            ├── access-control-with-interpreter.cpp
+            ├── arithmetic-expression-evaluator-with-interpreter.cpp
+        └── 📁Iterator
+            ├── employee-salary-collection-with-iterator-pattern.cpp
+            ├── Iterator-pattern-notes.md
+            ├── music-player-with-iterator-pattern.cpp
+        └── 📁mediator
+            ├── air-traffic-control-with-mediator-pattern.cpp
+            ├── chatroom-with-mediator-pattern.cpp
+        └── 📁memento
+            ├── memento-design-pattern-notes.md
+            ├── text-editor-state-manages-with-memento-pattern.cpp
+            ├── video-game-state-manages-with-memento-pattern.cpp
+        └── 📁observer
+            ├── social-media-with-observer.cpp
+            ├── stock-market-prices-notifierwith-observer-pattern.cpp
+            ├── weather-station-with-observer.cpp
+        └── 📁state
+            ├── atm-machine-with-state-pattern.cpp
+            ├── media-player-with-state-pattern.cpp
+            ├── traffic-signals-system-with-state-pattern.cpp
+        └── 📁strategy
+            ├── file-compression-app-with-strategy.cpp
+            ├── payment-with-strategy.cpp.cpp
+            ├── payment-without-strategy.cpp
+            ├── sorting-app-with-strategy.cpp
+        └── 📁template
+            ├── beverage-shop-with-template-pattern.cpp
+            ├── file-processing-with-template-pattern.cpp
+            ├── game-development-with-template-pattern.cpp
+            ├── payment-gateway-with-template-pattern.cpp
+        └── 📁visitor
+            ├── bank-account(current-saving)-with-visitor-pattern.cpp
+            ├── edtech-course-management-with-visitor-pattern-enhanced.cpp
+            ├── edtech-course-management-with-visitor-pattern.cpp
+            ├── shopping-cart-with-visitor-pattern.cpp
+    ├── .gitignore
+    ├── input.txt
+    ├── output.txt
+    └── README.md
+```
