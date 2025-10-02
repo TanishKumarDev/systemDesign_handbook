@@ -360,7 +360,7 @@ int main() {
 Bhai, doubt clear karte hain step by step 👇
 
 ---
-### ⚡ Virtual Function 
+#### ⚡ Virtual Function 
 ```cpp
 virtual void processPayment(double amount) = 0; // Pure virtual (must be overridden)
 virtual ~PaymentProcessor() = default; // Virtual destructor for safety
@@ -412,7 +412,7 @@ virtual ~PaymentProcessor() = default; // Virtual destructor for safety
 
 * Virtual destructor ensure karta hai ki **child ka destructor bhi call ho**.
 
-### **How?**
+#### **How?**
 
 * `virtual ~PaymentProcessor()` likhne se destructor polymorphic ban jaata hai.
 * `= default` se hume manually likhne ki zaroorat nahi, compiler bana dega.
@@ -526,8 +526,7 @@ Base destructor
 
 ---
 
-#### 4. Tumhare Example me
-
+#### 4. Example
 ```cpp
 virtual ~PaymentProcessor() = default;
 ```
