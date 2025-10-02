@@ -355,12 +355,49 @@ int main() {
     return 0;
 }
 ```
+---
+
+### 6. **Logic of Code (Step by Step)**
+
+1. **Abstraction (`PaymentProcessor`)**
+
+   * Defines the contract: `processPayment(double amount)`.
+   * No implementation → forces derived classes to provide their own.
+
+2. **Extension (`CreditCardPaymentProcessor`, `PayPalPaymentProcessor`, `UpiPaymentProcessor`)**
+
+   * Each implements `processPayment()` in their own way.
+   * Old code (base + other classes) remains **untouched**.
+
+3. **Client (`main`)**
+
+   * Uses polymorphism → same function call behaves differently.
+   * Easy to add new methods (e.g., CryptoPayment) → just add a class, don’t touch old ones.
 
 ---
-Bhai, doubt clear karte hain step by step 👇
+
+### 7. **Benefits**
+
+* ✅ New functionality = new class, not editing old.
+* ✅ Old tested code remains safe.
+* ✅ Follows **polymorphism & abstraction**.
+* ✅ Extensible system for real-world changes (new payment methods).
 
 ---
-#### ⚡ Virtual Function 
+
+### 8. **Takeaway**
+
+👉 **Open for extension, closed for modification.**
+👉 Add features by **adding new code**, not by **editing existing code**.
+
+Got it! I’ve reformatted your content so that everything is organized **under `###` headings**, using **`####` only for sub-sections**, without removing any lines. Here’s the cleaned-up version:
+
+---
+
+### ⚡ Virtual Function & Destructor in C++
+
+#### ⚡ Virtual Function
+
 ```cpp
 virtual void processPayment(double amount) = 0; // Pure virtual (must be overridden)
 virtual ~PaymentProcessor() = default; // Virtual destructor for safety
@@ -370,19 +407,19 @@ virtual ~PaymentProcessor() = default; // Virtual destructor for safety
 
 #### ⚡ `virtual void processPayment(double amount) = 0;`
 
-#### **What?**
+##### **What?**
 
 * Yeh **pure virtual function** hai.
 * Matlab: is function ka **koi implementation** nahi hoga base class me.
 * Sirf **blueprint** deta hai: “Jo bhi child class banega, usko yeh function zaroor implement karna padega.”
 
-#### **Why?**
+##### **Why?**
 
 * Kyunki `PaymentProcessor` ek **abstract class** banani hai.
 * Hum nahi chahte ki koi `PaymentProcessor` ka object banaye (kyunki payment ka exact method define nahi hai).
 * Har child class (PayPal, UPI, CreditCard) apne hisaab se payment ka logic define karegi.
 
-#### **How?**
+##### **How?**
 
 * `= 0` likhne se compiler samajh jaata hai ki yeh **pure virtual** hai.
 * Agar child ne is function ko override nahi kiya → **Compile-time error**.
@@ -394,25 +431,25 @@ virtual ~PaymentProcessor() = default; // Virtual destructor for safety
 
 #### ⚡ `virtual ~PaymentProcessor() = default;`
 
-#### **What?**
+##### **What?**
 
 * Yeh ek **virtual destructor** hai.
 * `= default` ka matlab hai: compiler automatically ek default destructor bana dega.
 
-#### **Why?**
+##### **Why?**
 
 * Jab hum base class ka pointer use karte hain:
 
-  ```cpp
-  PaymentProcessor* processor = new PayPalPaymentProcessor();
-  delete processor;
-  ```
+```cpp
+PaymentProcessor* processor = new PayPalPaymentProcessor();
+delete processor;
+```
 
-  Agar destructor **virtual** na ho, toh sirf `PaymentProcessor` ka destructor chalega, child ka destructor skip ho jaayega → **memory leak / incomplete cleanup**.
+Agar destructor **virtual** na ho, toh sirf `PaymentProcessor` ka destructor chalega, child ka destructor skip ho jaayega → **memory leak / incomplete cleanup**.
 
 * Virtual destructor ensure karta hai ki **child ka destructor bhi call ho**.
 
-#### **How?**
+##### **How?**
 
 * `virtual ~PaymentProcessor()` likhne se destructor polymorphic ban jaata hai.
 * `= default` se hume manually likhne ki zaroorat nahi, compiler bana dega.
@@ -420,10 +457,11 @@ virtual ~PaymentProcessor() = default; // Virtual destructor for safety
 👉 In simple words:
 *"Agar base pointer se child object delete karoge, toh pura cleanup ho, half nahi."*
 
+---
 
 ### Destructor Simplified
 
-#### 1. Destructor kya hota hai?
+##### 1. Destructor kya hota hai?
 
 * Destructor = **special function** jo object ke destroy hone par automatically chal jaata hai.
 * Use hota hai → memory clean karne ke liye, resources (file, database connection, heap memory) free karne ke liye.
@@ -526,7 +564,8 @@ Base destructor
 
 ---
 
-#### 4. Example
+##### 4. Example
+
 ```cpp
 virtual ~PaymentProcessor() = default;
 ```
@@ -538,7 +577,7 @@ Matlab:
 
 ---
 
-##### Final Ek-Line Simple Words
+#### Final Ek-Line Simple Words
 
 * Destructor = jab object delete hota hai → cleanup.
 * Agar **virtual destructor** nahi hai → base pointer se delete karne pe sirf base cleanup hoga, child ka nahi (problem!).
@@ -546,49 +585,12 @@ Matlab:
 
 ---
 
-Bhai, ab clear hua? Ya mai ek **daily life analogy** banake samjhaun (jaise ghar me safai pehle chhote kamre → fir bada kamra)?
-
-##### Final Summary
+#### Final Summary
 
 * **`virtual void processPayment(...) = 0;`** → Pure virtual function → child must override → makes class **abstract**.
 * **`virtual ~PaymentProcessor() = default;`** → Virtual destructor → ensures proper destruction (no memory leaks) when using base class pointers.
 
 ---
-
-### 6. **Logic of Code (Step by Step)**
-
-1. **Abstraction (`PaymentProcessor`)**
-
-   * Defines the contract: `processPayment(double amount)`.
-   * No implementation → forces derived classes to provide their own.
-
-2. **Extension (`CreditCardPaymentProcessor`, `PayPalPaymentProcessor`, `UpiPaymentProcessor`)**
-
-   * Each implements `processPayment()` in their own way.
-   * Old code (base + other classes) remains **untouched**.
-
-3. **Client (`main`)**
-
-   * Uses polymorphism → same function call behaves differently.
-   * Easy to add new methods (e.g., CryptoPayment) → just add a class, don’t touch old ones.
-
----
-
-### 7. **Benefits**
-
-* ✅ New functionality = new class, not editing old.
-* ✅ Old tested code remains safe.
-* ✅ Follows **polymorphism & abstraction**.
-* ✅ Extensible system for real-world changes (new payment methods).
-
----
-
-### 8. **Takeaway**
-
-👉 **Open for extension, closed for modification.**
-👉 Add features by **adding new code**, not by **editing existing code**.
-
-
 ## Liskov’s Substitution Principle (LSP)
 
 ### 1. **Definition**
