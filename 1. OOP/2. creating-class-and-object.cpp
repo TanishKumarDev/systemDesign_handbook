@@ -27,3 +27,4 @@ int main()
     cout << s1.name << endl;
     return 0;
 }
+
